@@ -51,7 +51,7 @@ public class DBGenerator {
                 .constraint(primaryKey("rut")).execute();
     }
     public static void crearTablaFechaDeVencimiento(DSLContext create){
-        create.createTableIfNotExists("fecha_vencimiento_productos").column("id",INTEGER)
+        create.createTableIfNotExists("fecha_vencimiento_productos").column("producto_id",INTEGER)
                 .constraint(foreignKey("producto_id").references("productos","id"))
                 .column("cantidad",INTEGER)
                 .column("fecha_vencimiento",DATE)
