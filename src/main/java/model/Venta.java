@@ -7,10 +7,13 @@ public class Venta {
 	private String codigo;
 	private String estado;
 	private int pagado;
-	private ArrayList<Producto> productos = new ArrayList<Producto>();
+	private ArrayList<Producto> productos;
 
-	public Venta(String codigo) {
+	public Venta(String codigo, String estado, int pagado) {
 		this.codigo=codigo;
+		this.estado=estado;
+		this.pagado=pagado;
+		this.productos=new ArrayList<>();
 	}
 
 	public String getCodigo() {
@@ -18,7 +21,7 @@ public class Venta {
 	}
 
 	public ArrayList<Producto> getProductos() {
-		throw new UnsupportedOperationException();
+		return  this.productos;
 	}
 
 	public String getEstado() {
