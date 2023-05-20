@@ -1,11 +1,21 @@
 package model;
 
+import java.sql.Date;
+
 public class Producto {
 	private String codigo;
 	private String nombre;
 	private int stock;
 	private String categoria;
 	private Date fechaVencimiento;
+
+	public Producto(String codigo, String nombre, int stock, String categoria, Date fechaVencimiento) {
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.stock = stock;
+		this.categoria = categoria;
+		this.fechaVencimiento = fechaVencimiento;
+	}
 
 	public String getCodigo() {
 		return this.codigo;
@@ -43,7 +53,4 @@ public class Producto {
 		return this.fechaVencimiento;
 	}
 
-	public Producto(String codigo, String nombre, int stock, String categoria, Date fechaVencimiento) {
-		throw new UnsupportedOperationException();
-	}
 }

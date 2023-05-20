@@ -9,7 +9,12 @@ public abstract class Trabajador {
 	private String correo;
 
 	public Trabajador(String rut, String nombre, String horario, String titulo, String telefono, String correo) {
-		throw new UnsupportedOperationException();
+		this.rut = rut;
+		this.nombre = nombre;
+		this.horario = horario;
+		this.titulo = titulo;
+		this.telefono = telefono;
+		this.correo = correo;
 	}
 
 	public String getRut() {

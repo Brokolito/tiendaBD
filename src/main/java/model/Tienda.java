@@ -14,7 +14,9 @@ public class Tienda {
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
 	public Tienda(String nombre, String horaAtencion, String direccion) {
-		throw new UnsupportedOperationException();
+		this.nombre=nombre;
+		this.horaAtencion=horaAtencion;
+		this.direccion=direccion;
 	}
 
 	public String getNombre() {

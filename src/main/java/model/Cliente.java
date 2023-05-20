@@ -9,10 +9,15 @@ public class Cliente {
 	private String direccion;
 	private String telefono;
 	private Carrito carrito;
-	private ArrayList<Venta> ventas = new ArrayList<Venta>();
+	private ArrayList<Venta> ventas;
 
-	public Cliente(String rut, String nombre, String direccio, String telefono) {
-		throw new UnsupportedOperationException();
+	public Cliente(String rut, String nombre, String direccion, String telefono) {
+		this.rut=rut;
+		this.nombre=nombre;
+		this.direccion=direccion;
+		this.telefono=telefono;
+		this.ventas=new ArrayList<>();
+
 	}
 
 	public String getRut() {

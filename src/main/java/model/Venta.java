@@ -10,7 +10,7 @@ public class Venta {
 	private ArrayList<Producto> productos = new ArrayList<Producto>();
 
 	public Venta(String codigo) {
-		throw new UnsupportedOperationException();
+		this.codigo=codigo;
 	}
 
 	public String getCodigo() {
