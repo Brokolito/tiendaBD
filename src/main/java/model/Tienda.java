@@ -9,14 +9,35 @@ public class Tienda {
 	private String nombre;
 	private String horaAtencion;
 	private String direccion;
-	private ArrayList<Trabajador> trabajadores = new ArrayList<Trabajador>();
-	private ArrayList<Bodega> bodegas = new ArrayList<Bodega>();
-	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+	private ArrayList<Trabajador> trabajadores;
+	private ArrayList<Bodega> bodegas;
+	private ArrayList<Cliente> clientes;
+	private ArrayList<Producto> productos;
 
 	public Tienda(String nombre, String horaAtencion, String direccion) {
 		this.nombre=nombre;
 		this.horaAtencion=horaAtencion;
 		this.direccion=direccion;
+		this.trabajadores = new ArrayList<>();
+		this.clientes = new ArrayList<>();
+		this.bodegas = new ArrayList<>();
+		this.productos = new ArrayList<>();
+	}
+
+	public ArrayList<Trabajador> getTrabajadores() {
+		return trabajadores;
+	}
+
+	public ArrayList<Bodega> getBodegas() {
+		return bodegas;
+	}
+
+	public ArrayList<Cliente> getClientes() {
+		return clientes;
+	}
+
+	public ArrayList<Producto> getProductos() {
+		return productos;
 	}
 
 	public String getNombre() {
@@ -39,43 +60,116 @@ public class Tienda {
 		this.direccion = direccion;
 	}
 
-	public boolean realizarVenta(Carrito carrito) {
-		throw new UnsupportedOperationException();
+
+
+	public void addCliente(Cliente cliente) {
+		if(buscarCliente(cliente)== null){
+			clientes.add(cliente);
+		}
+	}
+	public Cliente buscarCliente(Cliente cliente){
+		for( Cliente cliente1 : this.clientes){
+			if(cliente1.getRut().equals(cliente.getRut())){
+				return cliente;
+			}
+		}
+		return null;
+	}
+	public void removeCliente(String rutCliente) {
+		this.clientes.removeIf(cliente -> cliente.getRut().equals(rutCliente));
+	}
+	public void addTrabajador(Trabajador trabajador) {
+		if (buscarTrabajador(trabajador)==null){
+			trabajadores.add(trabajador);
+		}
+	}
+	public Trabajador buscarTrabajador(Trabajador trabajador){
+		for(Trabajador trabajador1 : this.trabajadores){
+			if(trabajador1.getRut().equals(trabajador.getRut())){
+				return trabajador;
+			}
+		}
+		return null;
 	}
 
-	public boolean addCliente(Cliente cliente) {
-		throw new UnsupportedOperationException();
+	public void removeTrabajador(String rutTrabajador) {
+		this.trabajadores.removeIf(trabajador -> trabajador.getRut().equals(rutTrabajador));
+	}
+	public void addBodega(Bodega bodega){
+		if(buscarBodega(bodega)==null){
+			bodegas.add(bodega);
+		}
 	}
 
-	public boolean addTrabajador(Trabajador trabajador) {
-		throw new UnsupportedOperationException();
+	public Bodega buscarBodega(Bodega bodega){
+		for (Bodega bodega1 : this.bodegas){
+			if (bodega1.getCodigoBodega().equals(bodega.getCodigoBodega())){
+				return bodega1;
+			}
+		}
+		return null;
+	}
+	public void removeBodega(String codigoBodega){
+		this.bodegas.removeIf(bodega -> bodega.getCodigoBodega().equals(codigoBodega));
+	}
+	public void addProductoBodega(Bodega bodega, Producto producto) {
+		if(buscarProductoBodega(bodega,producto)==null){
+			bodega.getProductos().add(producto);
+		}
+	}
+	public Producto buscarProductoBodega(Bodega bodega, Producto producto){
+		for(Producto producto1 : bodega.getProductos()){
+			if(producto1.getCodigo().equals(producto.getCodigo())){
+				return producto;
+			}
+		}
+		return null;
 	}
 
-	public boolean removeCliente(String rutCliente) {
-		throw new UnsupportedOperationException();
+	public void removeProductoBodega(Bodega bodega, String codigo) {
+		bodega.getProductos().removeIf(producto -> producto.getCodigo().equals(codigo));
+	}
+	public void addProductoTienda(Producto producto) {
+		if(buscarProductoTienda(producto)==null){
+			productos.add(producto);
+		}
+	}
+	public Producto buscarProductoTienda(Producto producto){
+		for(Producto producto1 : this.productos){
+			if(producto1.getCodigo().equals(producto.getCodigo())){
+				return producto;
+			}
+		}
+		return null;
 	}
 
-	public boolean removeTrabajador(String rutTrabajador) {
-		throw new UnsupportedOperationException();
+	public void removeProductoTienda(String codigo) {
+		this.productos.removeIf(producto -> producto.getCodigo().equals(codigo));
 	}
 
-	public boolean addProducto(Producto producto) {
-		throw new UnsupportedOperationException();
-	}
-
-	public boolean removeProducto(String codigo) {
-		throw new UnsupportedOperationException();
-	}
-
-	public boolean cancelarCompra(String codigoCompra) {
-		throw new UnsupportedOperationException();
+	public boolean cancelarCompra(Venta venta) {
+		if (venta.getEstado()==null){
+			return true;
+		}
+		return false;
 	}
 
 	public boolean addProductoCarrito(Carrito carrito, Producto producto) {
-		throw new UnsupportedOperationException();
+		if (buscarProductoTienda(producto)!=null){
+			carrito.getProductos().add(producto);
+			return true;
+		}
+		return false;
 	}
 
-	public boolean removeProductoCarrito(Carrito carrito, String codigoProducto) {
-		throw new UnsupportedOperationException();
+	public void removeProductoCarrito(Carrito carrito, String codigoProducto) {
+		for(Producto producto : carrito.getProductos()){
+			if (producto.getCodigo().equals(codigoProducto)){
+				carrito.getProductos().remove(producto);
+			}
+		}
+	}
+	public boolean realizarVenta(Venta venta) {
+		return venta.getPagado();
 	}
 }

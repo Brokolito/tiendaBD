@@ -7,6 +7,11 @@ public class JefeDeLocal extends Trabajador {
 	}
 
 	public String getType() {
-		throw new UnsupportedOperationException();
+		return "Jefe de Local";
+	}
+
+	@Override
+	public String toString() {
+		return super.toString();
 	}
 }

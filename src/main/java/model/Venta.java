@@ -6,13 +6,13 @@ import model.Producto;
 public class Venta {
 	private String codigo;
 	private String estado;
-	private int pagado;
+	private boolean pagado;
 	private ArrayList<Producto> productos;
 
 	public Venta(String codigo, String estado, int pagado) {
 		this.codigo=codigo;
-		this.estado=estado;
-		this.pagado=pagado;
+		this.estado=null;
+		this.pagado=false;
 		this.productos=new ArrayList<>();
 	}
 
@@ -32,7 +32,7 @@ public class Venta {
 		this.estado = estado;
 	}
 
-	public int getPagado() {
+	public boolean getPagado() {
 		return this.pagado;
 	}
 }

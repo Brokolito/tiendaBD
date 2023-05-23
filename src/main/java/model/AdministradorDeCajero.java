@@ -11,6 +11,10 @@ public class AdministradorDeCajero extends Trabajador {
 	}
 
 	public String getType() {
-		throw new UnsupportedOperationException();
+		return "Administrador de cajero";
+	}
+	@Override
+	public String toString() {
+		return super.toString();
 	}
 }

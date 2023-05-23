@@ -53,4 +53,14 @@ public class Producto {
 		return this.fechaVencimiento;
 	}
 
+	@Override
+	public String toString() {
+		return "Producto{" +
+				"codigo='" + codigo + '\'' +
+				", nombre='" + nombre + '\'' +
+				", stock=" + stock +
+				", categoria='" + categoria + '\'' +
+				", fechaVencimiento=" + fechaVencimiento +
+				'}';
+	}
 }
