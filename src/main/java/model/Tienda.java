@@ -148,9 +148,16 @@ public class Tienda {
 	}
 
 	public boolean cancelarCompra(Venta venta) {
-		if (venta.getEstado()==null){
+		if (venta.getEstado().equals("pendiente")){
+			venta.setEstado("cancelado");
+			System.out.println("Se ha cancelado la compra  pendiente");
+			return true;
+		} else if (venta.getEstado().equals("completada")) {
+			venta.setEstado("devuelto");
+			System.out.println("Se ha registrado la devolucion del producto");
 			return true;
 		}
+		System.out.println("La venta que intenta cancelar ya esta cancelada");
 		return false;
 	}
 
@@ -170,7 +177,11 @@ public class Tienda {
 		}
 	}
 	public boolean realizarVenta(Venta venta) {
-		return venta.getPagado();
+		if(venta.getEstado().equals("pendiente")){
+			venta.setEstado("completado");
+			return true;
+		}
+		return false;
 	}
 	public void mostrarTrabajadores(){
 		System.out.println("Se muestran los trabajadores de la tienda\n");
