@@ -172,4 +172,22 @@ public class Tienda {
 	public boolean realizarVenta(Venta venta) {
 		return venta.getPagado();
 	}
+	public void mostrarTrabajadores(){
+		System.out.println("Se muestran los trabajadores de la tienda\n");
+		for (Trabajador trabajador : this.trabajadores){
+			System.out.println(trabajador.toString());
+		}
+	}
+	public void mostrarProductosTienda(){
+		System.out.println("\nSe muestran los productos de la tienda\n");
+		for(Producto producto : productos){
+			System.out.println(producto);
+		}
+	}
+	public void mostrarProductosBodega(Bodega bodega){
+		System.out.println("\nSe muestran los productos en la bodega "+bodega.getCodigoBodega()+"\n");
+		for(Producto producto : bodega.getProductos()){
+			System.out.println(producto);
+		}
+	}
 }

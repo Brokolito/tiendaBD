@@ -7,18 +7,28 @@ public abstract class Trabajador {
 	private String titulo;
 	private String telefono;
 	private String correo;
+	private String cargo;
 
-	public Trabajador(String rut, String nombre, String horario, String titulo, String telefono, String correo) {
+	public Trabajador(String rut, String nombre, String horario, String titulo, String telefono, String correo, String cargo) {
 		this.rut = rut;
 		this.nombre = nombre;
 		this.horario = horario;
 		this.titulo = titulo;
 		this.telefono = telefono;
 		this.correo = correo;
+		this.cargo = cargo;
 	}
 
 	public String getRut() {
 		return this.rut;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 
 	public String getNombre() {
@@ -62,4 +72,17 @@ public abstract class Trabajador {
 	}
 
 	public abstract String getType();
+
+	@Override
+	public String toString() {
+		return "Trabajador{" +
+				"rut='" + rut + '\'' +
+				", nombre='" + nombre + '\'' +
+				", horario='" + horario + '\'' +
+				", titulo='" + titulo + '\'' +
+				", telefono='" + telefono + '\'' +
+				", correo='" + correo + '\'' +
+				", cargo='" + cargo + '\'' +
+				'}';
+	}
 }
