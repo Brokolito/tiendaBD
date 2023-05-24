@@ -1,6 +1,10 @@
 Proyecto administrador de tienda
+
+
+
 I.Gestion de stock productos
 II.Gestion de ventas
+III.Gestion de personal y bodegas
 
 
 
